@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setFixedSize(MARGIN*2+TOTAL_PAN_SIZE*CELL_SIZE,MARGIN*2+TOTAL_PAN_SIZE*CELL_SIZE);
+    setFixedSize(MARGIN*2+PAN_SIZE*CELL_SIZE,MARGIN*2+PAN_SIZE*CELL_SIZE);
     inGame();//开始游戏
 }
 
