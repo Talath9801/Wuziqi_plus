@@ -1,0 +1,18 @@
+#ifndef GAME_H
+#define GAME_H
+
+#include <vector>
+using namespace std;
+
+enum GameCondition
+{
+    
+};
+
+class Game
+{
+public:
+    Game();
+};
+
+#endif // GAME_H
