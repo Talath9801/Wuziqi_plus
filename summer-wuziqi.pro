@@ -31,7 +31,8 @@ SOURCES += \
 
 HEADERS += \
         mainwindow.h \
-    game.h
+    game.h \
+    distance.h
 
 FORMS += \
         mainwindow.ui

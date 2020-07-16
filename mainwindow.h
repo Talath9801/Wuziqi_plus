@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "game.h"
+#include "distance.h"
 
 namespace Ui {
 class MainWindow;

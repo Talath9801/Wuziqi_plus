@@ -2,6 +2,7 @@
 #define GAME_H
 
 #include <vector>
+#include <QPoint>
 using namespace std;
 
 const int TOTAL_PAN_SIZE=15;//15*15的棋盘
@@ -28,6 +29,7 @@ public:
     void startGame();
     vector<int> checkList;//棋子的状态,0为空，1黑子，-1白子
     vector<int> scoreList;//每个格子的打分
+    vector<QPoint> pointList;
     bool playerDo;//是否轮到玩家
 };
 
