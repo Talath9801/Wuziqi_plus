@@ -35,6 +35,7 @@ public:
     void updatePan(int x,int y);
     void AIAction(int &clickX,int &clickY);
     void  calculate();
+    bool ifWin(int x,int y);
 };
 
 #endif // GAME_H

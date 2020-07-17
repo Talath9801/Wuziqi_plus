@@ -2,7 +2,7 @@
 #include "ui_mainwindow.h"
 
 #include <QPainter>
-
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -44,6 +44,28 @@ void MainWindow::paintEvent(QPaintEvent *event)
                 painter.setBrush(Qt::white);
                 painter.drawEllipse(MARGIN+i*CELL_SIZE-CHESS_SIZE,MARGIN+j*CELL_SIZE-CHESS_SIZE,2*CHESS_SIZE,2*CHESS_SIZE);
             }
+        }
+    }
+    //判断输赢
+    if(toClickX>=0&&toClickX<=TOTAL_PAN_SIZE
+            &&toClickY>=0&&toClickX<=TOTAL_PAN_SIZE
+            &&(mygame->chessList[toClickX*16+toClickY]==1||mygame->chessList[toClickX*16+toClickY]==-1))
+    {
+        if (mygame->ifWin(toClickX,toClickY) && mygame->myGameCondition==playing)
+        {
+            mygame->myGameCondition=win;
+            QString s;
+            if(mygame->chessList[toClickX*16+toClickY]==1)
+                s="Black chess";
+            else if(mygame->chessList[toClickX*16+toClickY]==-1)
+                s="White chess";
+            QMessageBox::StandardButton btnValue=QMessageBox::information(this,"game",s+"win!");
+            if(btnValue==QMessageBox::Ok)
+            {
+                mygame->startGame();
+                mygame->myGameCondition=playing;
+            }
+
         }
     }
 

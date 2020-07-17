@@ -153,7 +153,7 @@ void Game::calculate()
                                 if(emptyNum==1)
                                     scoreList[row*16+line]+=60;
                                 else if(emptyNum==2)
-                                    scoreList[row*16+line]+=300;
+                                    scoreList[row*16+line]+=120;
                             }
                             else if(manNUm==4)
                             {
@@ -223,4 +223,52 @@ void Game::calculate()
             }
         }
 
+}
+bool Game::ifWin(int x, int y)
+{
+    for(int i=0;i<5;i++)
+    {
+        if(y-i>=0&&y-i+4<16
+                &&chessList[x*16+y-i]==chessList[x*16+y-i+1]
+                &&chessList[x*16+y-i]==chessList[x*16+y-i+2]
+                &&chessList[x*16+y-i]==chessList[x*16+y-i+3]
+                &&chessList[x*16+y-i]==chessList[x*16+y-i+4]
+                &&(chessList[x*16+y-i]==1
+                ||chessList[x*16+y-i]==-1))
+            return true;
+    }
+    for(int i=0;i<5;i++)
+    {
+        if(x-1>=0&&x-i+4<16
+                &&chessList[(x-1)*16+y]==chessList[(x-i+1)*16+y]
+                &&chessList[(x-1)*16+y]==chessList[(x-i+2)*16+y]
+                &&chessList[(x-1)*16+y]==chessList[(x-i+3)*16+y]
+                &&chessList[(x-1)*16+y]==chessList[(x-i+4)*16+y]
+                &&(chessList[(x-1)*16+y]==1
+                ||chessList[(x-1)*16+y]==-1))
+            return true;
+    }
+    for(int i=0;i<5;i++)
+    {
+        if(x+i<16&&x+i-4>=0&&y-i>=0&&y-i+4<16
+                &&chessList[(x+i)*16+y-i]==chessList[(x+i-1)*16+y-i+1]
+                &&chessList[(x+i)*16+y-i]==chessList[(x+i-2)*16+y-i+2]
+                &&chessList[(x+i)*16+y-i]==chessList[(x+i-3)*16+y-i+3]
+                &&chessList[(x+i)*16+y-i]==chessList[(x+i-4)*16+y-i+4]
+                &&(chessList[(x+i)*16+y-i]==1
+                ||chessList[(x+i)*16+y-i]==-1))
+            return true;
+    }
+    for(int i=0;i<5;i++)
+    {
+        if(x-i>=0&&x-i+4<16&&y-i>=0&&y-i+4<16
+                &&chessList[(x-1)*16+y-i]==chessList[(x-i+1)*16+y-i+1]
+                &&chessList[(x-1)*16+y-i]==chessList[(x-i+2)*16+y-i+2]
+                &&chessList[(x-1)*16+y-i]==chessList[(x-i+3)*16+y-i+3]
+                &&chessList[(x-1)*16+y-i]==chessList[(x-i+4)*16+y-i+4]
+                &&(chessList[(x-1)*16+y-i]==1
+                ||chessList[(x-1)*16+y-i]==-1))
+            return true;
+    }
+    return false;
 }
