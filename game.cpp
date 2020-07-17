@@ -46,3 +46,7 @@ void Game::updatePan(int x, int y)
         chessList[16*x+y]=-1;//电脑下棋
     playerDo=!playerDo;//换手
 }
+void Game::AIAction(int x, int y)
+{
+
+}

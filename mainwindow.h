@@ -5,6 +5,7 @@
 #include <QMouseEvent>
 #include "game.h"
 #include "distance.h"
+#include <QTimer>
 
 namespace Ui {
 class MainWindow;
@@ -22,6 +23,8 @@ public:
     void mouseReleaseEvent(QMouseEvent *event);
     void inGame();//进入游戏
     void manDo();//人下棋一步
+public slots:
+    void  AIdo();
 
 
 private:
