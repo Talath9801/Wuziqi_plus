@@ -33,7 +33,8 @@ public:
     bool playerDo;//是否轮到玩家
     void manAction(int x,int y);
     void updatePan(int x,int y);
-    void AIAction(int x,int y);
+    void AIAction(int &clickX,int &clickY);
+    void  calculate();
 };
 
 #endif // GAME_H
