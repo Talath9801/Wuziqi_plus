@@ -93,7 +93,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
           manDo();//人来落子
           ifClick=false;//落子之后改变状态
     }
-    QTimer::singleShot(1000, this, SLOT(AIdo()));
+    QTimer::singleShot(500, this, SLOT(AIdo()));
 }
 
 void MainWindow::manDo()
