@@ -28,6 +28,25 @@ void MainWindow::paintEvent(QPaintEvent *event)
         painter.drawEllipse(toClick.x()-MARK_SIZE/2,toClick.y()-MARK_SIZE/2,MARK_SIZE,MARK_SIZE);
     }
 
+    for(int i=0;i<16;i++)
+    {
+        for(int j=0;j<16;j++)
+        {
+            if(mygame->chessList[i*16+j]==1)
+            {
+                //黑棋
+                painter.setBrush(Qt::black);
+                painter.drawEllipse(MARGIN+i*CELL_SIZE-CHESS_SIZE,MARGIN+j*CELL_SIZE-CHESS_SIZE,2*CHESS_SIZE,2*CHESS_SIZE);
+            }
+            else if(mygame->chessList[i*16+j]==-1)
+            {
+                //白棋
+                painter.setBrush(Qt::white);
+                painter.drawEllipse(MARGIN+i*CELL_SIZE-CHESS_SIZE,MARGIN+j*CELL_SIZE-CHESS_SIZE,2*CHESS_SIZE,2*CHESS_SIZE);
+            }
+        }
+    }
+
 }
 
 MainWindow::~MainWindow()
@@ -71,7 +90,6 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         return;
     else
     {
-
           manDo();//人来落子
           ifClick=false;//落子之后改变状态
     }
