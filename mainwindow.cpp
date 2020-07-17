@@ -48,10 +48,15 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)//用于实现感应鼠标位
     //toClick=mypoint;
     for(int i=0;i<16*16;i++)
     {
-        if(inRange(mypoint,mygame->pointList[i],CLICK_RANGE)&&mygame->checkList[i]==0)//遍历pointlist，看是否有与鼠标位置的距离小于识别距离的点位
-              //                                                                         且满足该位置没有放棋子
+        if(inRange(mypoint,mygame->pointList[i],CLICK_RANGE)
+                &&mygame->chessList[i]==0
+                &&mygame->playerDo)//遍历pointlist，看是否有与鼠标位置的距离小于识别距离的点位
+                                   //且满足该位置没有放棋子,且轮到玩家
         {
             toClick=mygame->pointList[i];
+            numToClick=i;
+            toClickY=numToClick%16;
+            toClickX=(numToClick-toClickY)/16;
             ifClick=true;
             break;
         }
@@ -59,4 +64,24 @@ void MainWindow::mouseMoveEvent(QMouseEvent *event)//用于实现感应鼠标位
     }
     update();
 
+}
+void MainWindow::mouseReleaseEvent(QMouseEvent *event)
+{
+    if(ifClick==false)
+        return;
+    else
+    {
+
+          manDo();//人来落子
+          ifClick=false;//落子之后改变状态
+    }
+}
+
+void MainWindow::manDo()
+{
+    if(ifClick==true)
+    {
+        mygame->manAction(toClickX,toClickY);
+        update();
+    }
 }

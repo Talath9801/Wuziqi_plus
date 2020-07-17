@@ -7,12 +7,12 @@ Game::Game()
 
 void Game::startGame()
 {
-     checkList.clear();
+     chessList.clear();
      for(int i=0;i<16;i++)
      {
          for(int j=0;j<16;j++)
          {
-             checkList.push_back(0);
+             chessList.push_back(0);
          }
      }
      scoreList.clear();
@@ -32,4 +32,17 @@ void Game::startGame()
          }
      }
      playerDo=true;
+}
+void Game::manAction(int x, int y)
+{
+    updatePan(x,y);
+}
+
+void Game::updatePan(int x, int y)
+{
+    if(playerDo)
+        chessList[16*x+y]=1;//人下棋
+    else
+        chessList[16*x+y]=-1;//电脑下棋
+    playerDo=!playerDo;//换手
 }

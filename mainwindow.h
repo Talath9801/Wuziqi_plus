@@ -19,13 +19,18 @@ public:
     ~MainWindow();
     void paintEvent(QPaintEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
     void inGame();//进入游戏
+    void manDo();//人下棋一步
 
 
 private:
     Ui::MainWindow *ui;
     Game *mygame;
     QPoint toClick;
+    int numToClick=-1;
+    int toClickX;
+    int toClickY;
     bool ifClick=false;
 };
 

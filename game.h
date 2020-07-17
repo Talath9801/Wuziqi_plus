@@ -27,10 +27,12 @@ public:
     Game();
     GameCondition myGameCondition;
     void startGame();
-    vector<int> checkList;//棋子的状态,0为空，1黑子，-1白子
+    vector<int> chessList;//棋子的状态,0为空，1黑子，-1白子
     vector<int> scoreList;//每个格子的打分
     vector<QPoint> pointList;
     bool playerDo;//是否轮到玩家
+    void manAction(int x,int y);
+    void updatePan(int x,int y);
 };
 
 #endif // GAME_H
