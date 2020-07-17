@@ -18,7 +18,7 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void paintEvent(QPaintEvent *event);
-    void mouseTracking(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
     void inGame();//进入游戏
 
 

@@ -25,8 +25,9 @@ void MainWindow::paintEvent(QPaintEvent *event)
     painter.setBrush(Qt::black);
     if(ifClick)
     {
-        painter.drawEllipse(toClick.x(),toClick.y(),MARK_SIZE,MARK_SIZE);
+        painter.drawEllipse(toClick.x()-MARK_SIZE/2,toClick.y()-MARK_SIZE/2,MARK_SIZE,MARK_SIZE);
     }
+
 }
 
 MainWindow::~MainWindow()
@@ -41,17 +42,21 @@ void MainWindow::inGame()//构造函数中调用，初始化一个游戏
     mygame->startGame();
     update();
 }
-void MainWindow::mouseTracking(QMouseEvent *event)
+void MainWindow::mouseMoveEvent(QMouseEvent *event)//用于实现感应鼠标位置
 {
     QPoint mypoint=event->pos();
+    //toClick=mypoint;
     for(int i=0;i<16*16;i++)
     {
-        if(inRange(mypoint,mygame->pointList[i],CLICK_RANGE))//遍历pointlist，看是否有与鼠标位置的距离小于识别距离的点位
+        if(inRange(mypoint,mygame->pointList[i],CLICK_RANGE)&&mygame->checkList[i]==0)//遍历pointlist，看是否有与鼠标位置的距离小于识别距离的点位
+              //                                                                         且满足该位置没有放棋子
         {
             toClick=mygame->pointList[i];
             ifClick=true;
             break;
         }
+        else ifClick=false;
     }
     update();
+
 }
